@@ -5,9 +5,8 @@ import 'package:provider/provider.dart';
 import 'injection_container.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:refresh_token_flutter/states/auth_bloc.dart';
-import 'package:refresh_token_flutter/screens/home_screen.dart';
 import 'package:refresh_token_flutter/screens/login_screen.dart';
-import 'package:refresh_token_flutter/screens/welcome_screen.dart';
+import 'package:refresh_token_flutter/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,10 +37,7 @@ class MyApp extends StatelessWidget {
             if (state is UserAuthenticated) {
               return HomeScreen();
             }
-            if (state is UserUnauthenticated) {
-              return LoginScreen();
-            }
-            return WelcomeScreen();
+            return LoginScreen();
           },
         ));
   }

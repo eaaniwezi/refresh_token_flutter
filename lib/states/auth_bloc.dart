@@ -26,8 +26,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         if (hasToken) {
           final String userId = await authRepository.getUserId();
-
+          
           yield UserAuthenticated(userId: userId);
+        } else {
+          yield UserUnauthenticated();
         }
       } catch (e) {
         yield UserUnauthenticated();
@@ -66,7 +68,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           refreshToken: tokenModel.refreshToken.toString(),
         );
         final String userId = await authRepository.getUserId();
-         
+
         yield SuccessSubmittingCode();
         yield UserAuthenticated(userId: userId);
       } catch (e) {

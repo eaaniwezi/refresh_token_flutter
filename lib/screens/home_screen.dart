@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   if (state is UserAuthenticated) {
                     return _text(state.userId.toString());
                   }
-                  return _text("$state");
+                  return _text("");
                 },
               ),
             ],
